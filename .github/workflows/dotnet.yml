@@ -22,11 +22,16 @@ jobs:
 
     - name: Install .NET Framework 4.6.1 Targeting Pack
       shell: powershell
-      run: |
-        choco install netfx-4.6.1-devpack --yes --no-progress
+      run: choco install netfx-4.6.1-devpack --yes --no-progress
 
     - name: Restore NuGet packages
       run: nuget restore MCAConverter.sln
 
     - name: Build
       run: msbuild MCAConverter.sln /p:Configuration=Release
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v5
+      with:
+        name: MCAConverter
+        path: MCAConverter/bin/Release/
