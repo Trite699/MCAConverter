@@ -135,7 +135,7 @@ namespace MCAConverter
                 }
                 if (args.Count() > 4)
                 {
-                    if (!Int32.TryParse(args[4], out loopStart))
+                    if (!Int32.TryParse(args[4], out loopEnd))
                     {
                         loopEnd = 0;
                     }
